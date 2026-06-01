@@ -1,0 +1,79 @@
+openapi: 3.0.3
+info:
+  title: EnergyHome API
+  version: 1.0.0
+  description: API REST para gestión de consumo energético en el hogar.
+servers:
+  - url: http://localhost:4000
+paths:
+  /api/auth/register:
+    post:
+      tags: [Auth]
+      summary: Registrar usuario
+      responses:
+        '201':
+          description: Usuario registrado
+  /api/auth/login:
+    post:
+      tags: [Auth]
+      summary: Iniciar sesión
+      responses:
+        '200':
+          description: Autenticación correcta
+  /api/users/profile:
+    get:
+      tags: [Users]
+      security:
+        - bearerAuth: []
+      summary: Obtener perfil
+  /api/appliances:
+    get:
+      tags: [Appliances]
+      security:
+        - bearerAuth: []
+      summary: Listar electrodomésticos
+    post:
+      tags: [Appliances]
+      security:
+        - bearerAuth: []
+      summary: Crear electrodoméstico
+  /api/appliances/{id}:
+    get:
+      tags: [Appliances]
+      security:
+        - bearerAuth: []
+      summary: Obtener electrodoméstico
+    put:
+      tags: [Appliances]
+      security:
+        - bearerAuth: []
+      summary: Actualizar electrodoméstico
+    delete:
+      tags: [Appliances]
+      security:
+        - bearerAuth: []
+      summary: Eliminar electrodoméstico
+  /api/consumption:
+    get:
+      tags: [Consumption]
+      security:
+        - bearerAuth: []
+      summary: Historial de consumo
+  /api/consumption/summary:
+    get:
+      tags: [Consumption]
+      security:
+        - bearerAuth: []
+      summary: Resumen de consumo
+  /api/recommendations:
+    get:
+      tags: [Recommendations]
+      security:
+        - bearerAuth: []
+      summary: Recomendaciones de ahorro
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
