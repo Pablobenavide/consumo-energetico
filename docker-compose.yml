@@ -1,12 +1,13 @@
 services:
   postgres:
     image: postgres:16-alpine
+    command: ["postgres", "-p", "5433"]
     environment:
       POSTGRES_DB: energyhome
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - "5432:5432"
+      - "5433:5433"
     volumes:
       - postgres-data:/var/lib/postgresql/data
       - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
@@ -19,7 +20,7 @@ services:
       PORT: 4000
       JWT_SECRET: change-me
       DB_HOST: postgres
-      DB_PORT: 5432
+      DB_PORT: 5433
       DB_USER: postgres
       DB_PASSWORD: postgres
       DB_NAME: energyhome
