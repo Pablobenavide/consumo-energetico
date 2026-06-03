@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext';
 export function LoginPage() {
   const navigate = useNavigate();
   const { authenticate } = useAuth();
-  const [form, setForm] = useState({ email: 'demo@energyhome.com', password: 'Password123!' });
+  const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
 
   const submit = async (event) => {
